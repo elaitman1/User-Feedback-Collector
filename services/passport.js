@@ -27,7 +27,8 @@ passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback',
-    proxy: true//if request runs through any proxy, just trust it and calculate callback url correctly
+    proxy: true
+    //if request runs through any proxy, just trust it and calculate callback url correctly
   },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({googleId: profile.id})//look through the users collection and find the first record where the google id matches the record id
